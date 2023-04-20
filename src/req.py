@@ -1,7 +1,7 @@
 import random
 import time
 from datetime import datetime
-from typing import Any
+from typing import Any, Tuple, Dict
 from urllib.parse import parse_qs
 
 from fastapi import Request
@@ -16,7 +16,7 @@ def fetch(url: str, kwds: dict):
     return url, parse_qs(kwds['body'])
 
 
-def parse_fetch() -> tuple[str, dict[str, Any]]:
+def parse_fetch() -> Tuple[str, Dict[str, Any]]:
     code = (BASE_DIR / 'data' / 'fetch').read_text('UTF-8').rstrip(';')
     url, data = eval(code)
     return url, data
